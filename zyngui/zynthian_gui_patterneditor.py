@@ -64,7 +64,8 @@ CELL_BACKGROUND     = zynthian_gui_config.color_panel_bd
 CELL_FOREGROUND     = zynthian_gui_config.color_panel_tx
 GRID_LINE           = zynthian_gui_config.color_tx_off
 PLAYHEAD_HEIGHT     = 5
-CONFIG_ROOT         = "/zynthian/zynthian-data/zynseq"
+data_dir = os.environ.get('ZYNTHIAN_DATA_DIR',"/zynthian/zynthian-data")
+CONFIG_ROOT         = os.path.join(data_dir, "zynseq")
 # Define encoder use: 0=Layer, 1=Back, 2=Snapshot, 3=Select
 ENC_LAYER           = 0
 ENC_BACK            = 1

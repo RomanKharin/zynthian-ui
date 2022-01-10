@@ -73,7 +73,9 @@ class zynthian_gui_fileselector():
 		self.tb_panel.grid(column=0, row=0, columnspan=5)
 
 		iconsize = (zynthian_gui_config.topbar_height - 2, zynthian_gui_config.topbar_height - 2)
-		self.imgBack = ImageTk.PhotoImage(Image.open("/zynthian/zynthian-ui/icons/back.png").resize(iconsize))
+		self.imgBack = ImageTk.PhotoImage(Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "back.png"
+		)).resize(iconsize))
 		self.btnCancel = tkinter.Button(self.tb_panel, command=self.hide,
 			image=self.imgBack,
 			bd=0, highlightthickness=0,

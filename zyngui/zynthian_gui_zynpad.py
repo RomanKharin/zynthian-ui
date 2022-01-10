@@ -33,6 +33,7 @@ ENC_SELECT          = 3
 import inspect
 import tkinter
 import logging
+import os
 import tkinter.font as tkFont
 from math import sqrt
 from PIL import Image, ImageTk
@@ -305,27 +306,47 @@ class zynthian_gui_zynpad():
 		self.selection = self.grid_canvas.create_rectangle(0, 0, self.column_width, self.row_height, fill="", outline=SELECT_BORDER, width=self.select_thickness, tags="selection")
 
 		iconsize = (int(self.column_width * 0.5), int(self.row_height * 0.2))
-		img = (Image.open("/zynthian/zynthian-ui/icons/oneshot.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "oneshot.png"
+		)).resize(iconsize))
 		self.mode_icon[1] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/loop.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "loop.png"
+		)).resize(iconsize))
 		self.mode_icon[2] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/oneshotall.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "oneshotall.png"
+		)).resize(iconsize))
 		self.mode_icon[3] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/loopall.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "loopall.png"
+		)).resize(iconsize))
 		self.mode_icon[4] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/oneshotsync.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "oneshotsync.png"
+		)).resize(iconsize))
 		self.mode_icon[5] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/loopsync.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "loopsync.png"
+		)).resize(iconsize))
 		self.mode_icon[6] = ImageTk.PhotoImage(img)
 
 		iconsize = (int(self.row_height * 0.2), int(self.row_height * 0.2))
-		img = (Image.open("/zynthian/zynthian-ui/icons/stopped.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "stopped.png"
+		)).resize(iconsize))
 		self.state_icon[zynthian_gui_stepsequencer.SEQ_STOPPED] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/starting.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "starting.png"
+		)).resize(iconsize))
 		self.state_icon[zynthian_gui_stepsequencer.SEQ_STARTING] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/playing.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "playing.png"
+		)).resize(iconsize))
 		self.state_icon[zynthian_gui_stepsequencer.SEQ_PLAYING] = ImageTk.PhotoImage(img)
-		img = (Image.open("/zynthian/zynthian-ui/icons/stopping.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "stopping.png"
+		)).resize(iconsize))
 		self.state_icon[zynthian_gui_stepsequencer.SEQ_STOPPING] = ImageTk.PhotoImage(img)
 
 		self.text_labels = []

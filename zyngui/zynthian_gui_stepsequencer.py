@@ -142,17 +142,29 @@ class zynthian_gui_stepsequencer(zynthian_gui_base.zynthian_gui_base):
 
 		#Menu parameters
 		iconsize = (zynthian_gui_config.topbar_height - 4, zynthian_gui_config.topbar_height - 4)
-		self.image_play = ImageTk.PhotoImage(Image.open("/zynthian/zynthian-ui/icons/playing.png").resize(iconsize))
-		self.image_playing = ImageTk.PhotoImage(Image.open("/zynthian/zynthian-ui/icons/playing.png").resize(iconsize))
-		self.image_back = ImageTk.PhotoImage(Image.open("/zynthian/zynthian-ui/icons/back.png").resize(iconsize))
-		self.image_forward = ImageTk.PhotoImage(Image.open("/zynthian/zynthian-ui/icons/tick.png").resize(iconsize))
-		img = (Image.open("/zynthian/zynthian-ui/icons/arrow.png").resize(iconsize))
+		self.image_play = ImageTk.PhotoImage(Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "playing.png"
+		)).resize(iconsize))
+		self.image_playing = ImageTk.PhotoImage(Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "playing.png"
+		)).resize(iconsize))
+		self.image_back = ImageTk.PhotoImage(Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "back.png"
+		)).resize(iconsize))
+		self.image_forward = ImageTk.PhotoImage(Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "tick.png"
+		)).resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "arrow.png"
+		)).resize(iconsize))
 		self.image_up = ImageTk.PhotoImage(img)
 		self.image_down = ImageTk.PhotoImage(img.rotate(180))
 
 		#TODO: Do we need status menu and if so, should be implemented in base class
 		iconsize = (zynthian_gui_config.topbar_height - 4, zynthian_gui_config.topbar_height - 4)
-		img = (Image.open("/zynthian/zynthian-ui/icons/recue.png").resize(iconsize))
+		img = (Image.open(os.path.join(
+			zynthian_gui_config.ui_dir, "icons", "recue.png"
+		)).resize(iconsize))
 		self.image_stop = ImageTk.PhotoImage(img)
 		self.button_stop = tkinter.Button(self.status_menu_frame, command=self.stop,
 			image=self.image_stop,

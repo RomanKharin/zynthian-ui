@@ -47,7 +47,11 @@ logging.getLogger().setLevel(level=log_level)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 logging.info("ZYNTHIAN-UI CONFIG ...")
-
+ui_dir = os.getenv("ZYNTHIAN_UI_PATH", os.path.join(
+	os.path.join(os.path.dirname(zynconf.sys_dir)))
+)
+if os.path.basename(ui_dir) != "zynthian-ui":
+	ui_dir = os.path.join(ui_dir, "zynthian-ui")
 #------------------------------------------------------------------------------
 # Wiring layout
 #------------------------------------------------------------------------------

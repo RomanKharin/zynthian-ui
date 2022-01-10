@@ -45,6 +45,10 @@ class zynthian_gui_admin(zynthian_gui_selector):
 
 	data_dir = os.environ.get('ZYNTHIAN_DATA_DIR',"/zynthian/zynthian-data")
 	sys_dir = os.environ.get('ZYNTHIAN_SYS_DIR',"/zynthian/zynthian-sys")
+	SRC_REPOS = [
+		"zyncoder", "zynthian-ui", "zynthian-sys", "zynthian-webconf", 
+		"zynthian-data"
+	]
 
 
 	def __init__(self):
@@ -745,16 +749,22 @@ class zynthian_gui_admin(zynthian_gui_selector):
 
 
 	def is_update_available(self):
-		repos = ["/zynthian/zyncoder", "/zynthian/zynthian-ui", "/zynthian/zynthian-sys", "/zynthian/zynthian-webconf", "/zynthian/zynthian-data"]
 		update_available = False
-		for path in repos:
+		repo_base = os.path.dirname(zynthian_gui_config.ui_dir)
+		for repo in self.SRC_REPOS:
+			path = os.path.join(repo_base, repo)
 			update_available |= (check_output("git -C %s status --porcelain -bs | grep behind | wc -l" % path, shell=True).decode()[:1] == '1')
 		return update_available
 
 
 	def check_for_updates(self):
 		self.zyngui.show_info("CHECK FOR UPDATES")
-		self.start_command(["git -C /zynthian/zyncoder remote update; git -C /zynthian/zynthian-ui remote update; git -C /zynthian/zynthian-sys remote update; git -C /zynthian/zynthian-webconf remote update; git -C /zynthian/zynthian-data remote update"])
+		repo_base = os.path.dirname(zynthian_gui_config.ui_dir)
+		cmds = []
+		for repo in self.SRC_REPOS:
+			path = os.path.join(repo_base, repo)
+			cmds.append("git -C \"%s\" remote update" % path)
+		self.start_command(cmds)
 
 
 	def update_system(self):
